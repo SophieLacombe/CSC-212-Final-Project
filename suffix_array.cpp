@@ -3,10 +3,9 @@
 #include <fstream>
 #include <string>
 
-void SuffixArray::loadDictionary(const std::string& filename)
-{
-    std::ifstream in(filename);
+SuffixArray::SuffixArray(const std::string& filename){ 
 
+    std::ifstream in(filename);
     std::string line;
 
     // skip header
@@ -29,4 +28,18 @@ void SuffixArray::loadDictionary(const std::string& filename)
         text += definition;
         text += '\n';
     }
+
+    size = text.size();
+    suffixes = new int[size];
+    for(int i = 0; i<size; i++){
+        suffixes[i] = i;
+    }
+}
+
+SuffixArray::~SuffixArray(){
+    delete[] suffixes;
+}
+
+void SuffixArray::build(){
+
 }

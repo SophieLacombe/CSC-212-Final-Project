@@ -6,12 +6,13 @@
 
 class SuffixArray {
 public:
-    SuffixArray();
+    SuffixArray(const std::string& filename);
     ~SuffixArray();
 
-    void loadDictionary(const std::string& filename);
     void build();
     void search(const std::string& query);
+
+    
 
 private:
     std::string text;  // entire dictionary
