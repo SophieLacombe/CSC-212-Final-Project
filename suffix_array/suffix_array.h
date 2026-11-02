@@ -9,8 +9,14 @@ public:
     SuffixArray(const std::string& filename);
     ~SuffixArray();
 
+    SuffixArray(const SuffixArray&) = delete;
+    SuffixArray& operator=(const SuffixArray&) = delete;
+
     void build();
-    void search(const std::string& query);
+    //void search(const std::string& query);
+    void save();
+
+    int getSize();
 
     
 

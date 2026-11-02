@@ -1,2 +1,10 @@
 # Executables
 *.exe
+
+# Build output
+*.o
+*.out
+
+# Generated suffix array files
+suffix_array/suffixes.csv
+suffix_array/text.csv
