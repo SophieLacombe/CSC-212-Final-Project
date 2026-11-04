@@ -43,17 +43,6 @@ SuffixArray::~SuffixArray(){
     delete[] suffixes;
 }
 
-/*void SuffixArray::build()
-{
-    std::sort(suffixes, suffixes + size,
-        [this](int a, int b)
-        {
-            return std::lexicographical_compare(
-                text.begin() + a, text.end(),
-                text.begin() + b, text.end()
-            );
-        });
-}*/
 
 void SuffixArray::build()
 {
@@ -121,7 +110,33 @@ void SuffixArray::build()
     }
 }
 
+
 void SuffixArray::save()
+{
+    std::ofstream textFile("text.bin", std::ios::binary);
+
+    size_t textSize = text.size();
+
+    textFile.write(reinterpret_cast<char*>(&textSize),
+                   sizeof(textSize));
+
+    textFile.write(text.data(), textSize);
+
+    textFile.close();
+
+    std::ofstream suffixFile("suffixes.bin",
+                             std::ios::binary);
+
+    suffixFile.write(reinterpret_cast<char*>(&size),
+                     sizeof(size));
+
+    suffixFile.write(reinterpret_cast<char*>(suffixes),
+                     size * sizeof(int));
+
+    suffixFile.close();
+}
+
+/*void SuffixArray::save()
 {
     // Save text
     std::ofstream textFile("text.csv");
@@ -141,7 +156,7 @@ void SuffixArray::save()
     }
 
     suffixFile.close();
-}
+}*/
 
 int SuffixArray::getSize(){
     return size;
