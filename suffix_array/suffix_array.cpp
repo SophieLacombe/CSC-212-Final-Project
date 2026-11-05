@@ -49,11 +49,18 @@ void SuffixArray::build()
     std::vector<int> rank(size);
     std::vector<int> tempRank(size);
 
+    std::string lowerText = text;
+
+    for (char& c : lowerText)
+    {
+        c = std::tolower(static_cast<unsigned char>(c));
+    }
+
     // Initial ranking by character
     for (int i = 0; i < size; i++)
     {
         suffixes[i] = i;
-        rank[i] = static_cast<unsigned char>(text[i]);
+        rank[i] = static_cast<unsigned char>(lowerText[i]);
     }
 
     for (int k = 1; k < size; k *= 2)
