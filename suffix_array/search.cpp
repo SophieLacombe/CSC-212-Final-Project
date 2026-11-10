@@ -2,9 +2,11 @@
 
 #include <fstream>
 #include <algorithm>
+#include <unordered_set>
 
 Search::Search(const std::string& textFile,
-               const std::string& suffixFile)
+               const std::string& suffixFile,
+               const std::string& entryFile)
 {
     // Load text
     std::ifstream textIn(textFile, std::ios::binary);
@@ -28,6 +30,20 @@ Search::Search(const std::string& textFile,
     suffixIn.read(
         reinterpret_cast<char*>(suffixes.data()),
         suffixSize
+    );
+
+    //load entry starts
+    std::ifstream entryIn(entryFile, std::ios::binary);
+
+    entryIn.seekg(0, std::ios::end);
+    size_t entrySize = entryIn.tellg();
+    entryIn.seekg(0);
+
+    entryStarts.resize(entrySize / sizeof(int));
+
+    entryIn.read(
+        reinterpret_cast<char*>(entryStarts.data()),
+        entrySize
     );
 
     lowerText = text;
@@ -80,6 +96,77 @@ std::vector<int> Search::find(const std::string& query)
 
         results.push_back(suffixes[start]);
         start++;
+    }
+
+    return results;
+}
+
+std::vector<Entry> Search::formatResults(
+    const std::vector<int>& matches)
+{
+    std::vector<Entry> results;
+
+    std::unordered_set<int> seenEntries;
+
+    for (int matchPos : matches)
+    {
+        auto it = std::upper_bound(
+            entryStarts.begin(),
+            entryStarts.end(),
+            matchPos);
+
+        if (it == entryStarts.begin())
+        {
+            continue;
+        }
+
+        --it;
+
+        int entryIndex =
+            std::distance(
+                entryStarts.begin(),
+                it);
+
+        if (seenEntries.find(entryIndex) != seenEntries.end())
+        {
+            continue;
+        }
+
+        seenEntries.insert(entryIndex);
+
+        int start = entryStarts[entryIndex];
+
+        int end =
+            (entryIndex + 1 < entryStarts.size())
+            ? entryStarts[entryIndex + 1]
+            : text.size();
+
+        std::string rawEntry =
+            text.substr(start, end - start);
+
+        size_t pipePos =
+            rawEntry.find('|');
+
+        if (pipePos == std::string::npos)
+        {
+            continue;
+        }
+
+        Entry entry;
+
+        entry.word =
+            rawEntry.substr(0, pipePos);
+
+        entry.definition =
+            rawEntry.substr(pipePos + 1);
+
+        if (!entry.definition.empty() &&
+            entry.definition.back() == '\n')
+        {
+            entry.definition.pop_back();
+        }
+
+        results.push_back(entry);
     }
 
     return results;

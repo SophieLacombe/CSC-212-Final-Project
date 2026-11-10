@@ -22,7 +22,7 @@ public:
 
 private:
     std::string text;  // entire dictionary
-
+    std::vector<int> entryStarts; //vector of definition starts
     int* suffixes;     // array of starting positions
     int size;          // number of suffixes
 };

@@ -22,6 +22,7 @@ SuffixArray::SuffixArray(const std::string& filename){
         {
             continue;
         }
+        entryStarts.push_back(text.size());
 
         std::string word = line.substr(0, commaPos);
         std::string definition = line.substr(commaPos + 1);
@@ -141,6 +142,22 @@ void SuffixArray::save()
                      size * sizeof(int));
 
     suffixFile.close();
+
+    std::ofstream entryFile(
+        "entry_starts.bin",
+        std::ios::binary);
+
+    size_t entryCount = entryStarts.size();
+
+    entryFile.write(
+        reinterpret_cast<char*>(&entryCount),
+        sizeof(entryCount));
+
+    entryFile.write(
+        reinterpret_cast<char*>(entryStarts.data()),
+        entryCount * sizeof(int));
+
+    entryFile.close();
 }
 
 /*void SuffixArray::save()
