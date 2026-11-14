@@ -18,7 +18,7 @@ public:
            const std::string& entryFile);
 
     std::vector<int> find(const std::string& query);
-    std::vector<Entry> Search::formatResults(const std::vector<int>& matches);
+    std::vector<Entry> formatResults(const std::vector<int>& matches);
     
 private:
     std::string text;

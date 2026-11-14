@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <unordered_set>
 
+
 Search::Search(const std::string& textFile,
                const std::string& suffixFile,
                const std::string& entryFile)
@@ -11,46 +12,55 @@ Search::Search(const std::string& textFile,
     // Load text
     std::ifstream textIn(textFile, std::ios::binary);
 
-    textIn.seekg(0, std::ios::end);
-    size_t textSize = textIn.tellg();
-    textIn.seekg(0);
+    size_t textSize;
+    textIn.read(
+        reinterpret_cast<char*>(&textSize),
+        sizeof(textSize));
 
+    
     text.resize(textSize);
-    textIn.read(text.data(), textSize);
+
+    textIn.read(
+        text.data(),
+        textSize);
 
     // Load suffix array
     std::ifstream suffixIn(suffixFile, std::ios::binary);
 
-    suffixIn.seekg(0, std::ios::end);
-    size_t suffixSize = suffixIn.tellg();
-    suffixIn.seekg(0);
+    int suffixCount;
+    suffixIn.read(
+        reinterpret_cast<char*>(&suffixCount),
+        sizeof(suffixCount));
 
-    suffixes.resize(suffixSize / sizeof(int));
+    
+    suffixes.resize(suffixCount);
 
     suffixIn.read(
         reinterpret_cast<char*>(suffixes.data()),
-        suffixSize
-    );
+        suffixCount * sizeof(int));
 
-    //load entry starts
+    // Load entry starts
     std::ifstream entryIn(entryFile, std::ios::binary);
 
-    entryIn.seekg(0, std::ios::end);
-    size_t entrySize = entryIn.tellg();
-    entryIn.seekg(0);
+    size_t entryCount;
+    entryIn.read(
+        reinterpret_cast<char*>(&entryCount),
+        sizeof(entryCount));
 
-    entryStarts.resize(entrySize / sizeof(int));
+    
+    entryStarts.resize(entryCount);
 
     entryIn.read(
         reinterpret_cast<char*>(entryStarts.data()),
-        entrySize
-    );
+        entryCount * sizeof(int));
 
+    // Create lowercase version of text
     lowerText = text;
 
     for (char& c : lowerText)
     {
-        c = std::tolower(static_cast<unsigned char>(c));
+        c = std::tolower(
+            static_cast<unsigned char>(c));
     }
 }
 
