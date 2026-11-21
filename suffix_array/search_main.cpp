@@ -8,7 +8,7 @@ int main() {
     Search testSearch("text.bin", "suffixes.bin", "entry_starts.bin");
 
     std::cout << "Constructor finished\n";
-    std::vector<int> resultInd =  testSearch.find("zebra");
+    std::vector<int> resultInd =  testSearch.find("zEbRa");
 
     std::cout << "Searching...\n";
 

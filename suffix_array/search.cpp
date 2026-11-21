@@ -66,6 +66,13 @@ Search::Search(const std::string& textFile,
 
 std::vector<int> Search::find(const std::string& query)
 {
+    std::string lowerQuery = query;
+
+    for (char& c : lowerQuery)
+    {
+        c = std::tolower(static_cast<unsigned char>(c));
+    }
+
     std::vector<int> results;
 
     int left = 0;
@@ -78,8 +85,8 @@ std::vector<int> Search::find(const std::string& query)
         int compare =
             lowerText.compare(
                 suffixes[mid],
-                query.size(),
-                query
+                lowerQuery.size(),
+                lowerQuery
             );
 
         if (compare < 0)
@@ -98,8 +105,8 @@ std::vector<int> Search::find(const std::string& query)
     {
         if (lowerText.compare(
                 suffixes[start],
-                query.size(),
-                query) != 0)
+                lowerQuery.size(),
+                lowerQuery) != 0)
         {
             break;
         }
