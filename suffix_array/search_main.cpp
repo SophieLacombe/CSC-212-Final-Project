@@ -1,9 +1,12 @@
 #include "search.h"
 #include <iostream>
+#include <chrono>
 
 int main() {
     // use search
     std::cout << "Starting\n";
+
+    auto start = std::chrono::high_resolution_clock::now();
 
     Search testSearch("text.bin", "suffixes.bin", "entry_starts.bin");
 
@@ -24,6 +27,14 @@ int main() {
         std::cout << "Printing entry\n";
         std::cout << entry.word << " " << entry.definition << '\n';
     }
+
+    auto end = std::chrono::high_resolution_clock::now();
+
+
+    std::chrono::duration<double> duration = end - start;
+
+    std::cout << "\nExecution time: " << duration.count() << " milliseconds\n";
+
 
     std::cout << "Done\n";
 
