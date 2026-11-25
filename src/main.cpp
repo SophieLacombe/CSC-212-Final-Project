@@ -2,11 +2,16 @@
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
 #include <string>
+#include "suffix_array/search.h"
+#include "Linear_Search/L_search.h"
 
 #include <GLFW/glfw3.h>
 
 int main()
 {
+    Search suffixSearch("../suffix_array/text.bin", "../suffix_array/suffixes.bin", "../suffix_array/entry_starts.bin");
+    L_search linearSearch("../L_search/clean_dictionary.csv");
+
     glfwInit();
 
     GLFWwindow* window =
@@ -37,29 +42,94 @@ int main()
         ImGui::NewFrame();
 
         ImGui::Begin("Dictionary");
-
-        static char word[128] = "";
-
-        ImGui::InputText(
-            "Word",
-            word,
-            IM_ARRAYSIZE(word));
-
-        std::string result = "";
-
-        if (ImGui::Button("Search"))
+        if (ImGui::BeginTabBar("SearchTabs"))
         {
-            // search dictionary
-            result = word;
-            ImGui::TextWrapped(
-                "%s",
-                result.c_str());
+
+            if (ImGui::BeginTabItem("Suffix Search"))
+            {
+                static char suffixWord[128] = "";
+                static std::vector<Entry> suffixResults;
+
+                ImGui::InputText(
+                    "##SuffixWord",
+                    suffixWord,
+                    IM_ARRAYSIZE(suffixWord));
+
+                if (ImGui::Button("Search Suffix"))
+                {
+                    suffixResults =
+                        suffixSearch.formatResults(
+                            suffixSearch.find(suffixWord));
+                }
+
+                ImGui::Separator();
+
+                if (suffixResults.empty())
+                {
+                    ImGui::Text("Results will appear here");
+                }
+                else
+                {
+                    for (const Entry& entry : suffixResults)
+                    {
+                        ImGui::Text("%s", entry.word.c_str());
+
+                        ImGui::Indent();
+                        ImGui::TextWrapped(
+                            "%s",
+                            entry.definition.c_str());
+                        ImGui::Unindent();
+
+                        ImGui::Separator();
+                    }
+                }
+
+                ImGui::EndTabItem();
+            }
+
+            if (ImGui::BeginTabItem("Linear Search"))
+            {
+                static char linearWord[128] = "";
+                static std::vector<LinearEntry> linearResults;
+
+                ImGui::InputText(
+                    "##LinearWord",
+                    linearWord,
+                    IM_ARRAYSIZE(linearWord));
+
+                if (ImGui::Button("Search Linear"))
+                {
+                    linearResults =
+                        linearSearch.format_results(
+                            linearSearch.find(linearWord));
+                }
+
+                ImGui::Separator();
+
+                if (linearResults.empty())
+                {
+                    ImGui::Text("Results will appear here");
+                }
+                else
+                {
+                    for (const LinearEntry& entry : linearResults)
+                    {
+                        ImGui::Text("%s", entry.word.c_str());
+
+                        ImGui::Indent();
+                        ImGui::TextWrapped(
+                            "%s",
+                            entry.definition.c_str());
+                        ImGui::Unindent();
+
+                        ImGui::Separator();
+                    }
+                }
+
+                ImGui::EndTabItem();
+            }
+            ImGui::EndTabBar();
         }
-
-        ImGui::Separator();
-
-        ImGui::Text("Results will appear here");
-
         ImGui::End();
 
         ImGui::Render();

@@ -85,12 +85,12 @@ clean: CMakeFiles/DictionaryApp.dir/clean
 CMakeFiles/DictionaryApp.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/sophie/csc212/finalProject/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target DictionaryApp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/sophie/csc212/finalProject/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target DictionaryApp"
 .PHONY : CMakeFiles/DictionaryApp.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DictionaryApp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/sophie/csc212/finalProject/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/sophie/csc212/finalProject/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DictionaryApp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/sophie/csc212/finalProject/build/CMakeFiles 0
 .PHONY : CMakeFiles/DictionaryApp.dir/rule
@@ -102,7 +102,7 @@ DictionaryApp: CMakeFiles/DictionaryApp.dir/rule
 # codegen rule for target.
 CMakeFiles/DictionaryApp.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/sophie/csc212/finalProject/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target DictionaryApp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/sophie/csc212/finalProject/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Finished codegen for target DictionaryApp"
 .PHONY : CMakeFiles/DictionaryApp.dir/codegen
 
 # clean rule for target.

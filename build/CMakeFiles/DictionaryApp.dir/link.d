@@ -3,6 +3,8 @@ DictionaryApp: \
   /usr/lib/gcc/x86_64-linux-gnu/15/../../../x86_64-linux-gnu/crti.o \
   /usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o \
   CMakeFiles/DictionaryApp.dir/src/main.cpp.o \
+  CMakeFiles/DictionaryApp.dir/suffix_array/search.cpp.o \
+  CMakeFiles/DictionaryApp.dir/Linear_Search/L_search.cpp.o \
   CMakeFiles/DictionaryApp.dir/external/imgui/imgui.cpp.o \
   CMakeFiles/DictionaryApp.dir/external/imgui/imgui_draw.cpp.o \
   CMakeFiles/DictionaryApp.dir/external/imgui/imgui_tables.cpp.o \
@@ -48,6 +50,10 @@ DictionaryApp: \
 /usr/lib/gcc/x86_64-linux-gnu/15/crtbeginS.o:
 
 CMakeFiles/DictionaryApp.dir/src/main.cpp.o:
+
+CMakeFiles/DictionaryApp.dir/suffix_array/search.cpp.o:
+
+CMakeFiles/DictionaryApp.dir/Linear_Search/L_search.cpp.o:
 
 CMakeFiles/DictionaryApp.dir/external/imgui/imgui.cpp.o:
 

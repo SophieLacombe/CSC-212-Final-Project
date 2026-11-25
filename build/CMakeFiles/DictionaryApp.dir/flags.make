@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sophie/csc212/finalProject/external/imgui -I/home/sophie/csc212/finalProject/external/imgui/backends
+CXX_INCLUDES = -I/home/sophie/csc212/finalProject/. -I/home/sophie/csc212/finalProject/external/imgui -I/home/sophie/csc212/finalProject/external/imgui/backends
 
 CXX_FLAGS = -std=gnu++17
 

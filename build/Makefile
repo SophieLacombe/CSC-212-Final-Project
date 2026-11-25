@@ -129,6 +129,30 @@ DictionaryApp/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/build
 .PHONY : DictionaryApp/fast
 
+Linear_Search/L_search.o: Linear_Search/L_search.cpp.o
+.PHONY : Linear_Search/L_search.o
+
+# target to build an object file
+Linear_Search/L_search.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/Linear_Search/L_search.cpp.o
+.PHONY : Linear_Search/L_search.cpp.o
+
+Linear_Search/L_search.i: Linear_Search/L_search.cpp.i
+.PHONY : Linear_Search/L_search.i
+
+# target to preprocess a source file
+Linear_Search/L_search.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/Linear_Search/L_search.cpp.i
+.PHONY : Linear_Search/L_search.cpp.i
+
+Linear_Search/L_search.s: Linear_Search/L_search.cpp.s
+.PHONY : Linear_Search/L_search.s
+
+# target to generate assembly for a file
+Linear_Search/L_search.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/Linear_Search/L_search.cpp.s
+.PHONY : Linear_Search/L_search.cpp.s
+
 external/imgui/backends/imgui_impl_glfw.o: external/imgui/backends/imgui_impl_glfw.cpp.o
 .PHONY : external/imgui/backends/imgui_impl_glfw.o
 
@@ -297,6 +321,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+suffix_array/search.o: suffix_array/search.cpp.o
+.PHONY : suffix_array/search.o
+
+# target to build an object file
+suffix_array/search.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/suffix_array/search.cpp.o
+.PHONY : suffix_array/search.cpp.o
+
+suffix_array/search.i: suffix_array/search.cpp.i
+.PHONY : suffix_array/search.i
+
+# target to preprocess a source file
+suffix_array/search.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/suffix_array/search.cpp.i
+.PHONY : suffix_array/search.cpp.i
+
+suffix_array/search.s: suffix_array/search.cpp.s
+.PHONY : suffix_array/search.s
+
+# target to generate assembly for a file
+suffix_array/search.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DictionaryApp.dir/build.make CMakeFiles/DictionaryApp.dir/suffix_array/search.cpp.s
+.PHONY : suffix_array/search.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -306,6 +354,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... DictionaryApp"
+	@echo "... Linear_Search/L_search.o"
+	@echo "... Linear_Search/L_search.i"
+	@echo "... Linear_Search/L_search.s"
 	@echo "... external/imgui/backends/imgui_impl_glfw.o"
 	@echo "... external/imgui/backends/imgui_impl_glfw.i"
 	@echo "... external/imgui/backends/imgui_impl_glfw.s"
@@ -327,6 +378,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... suffix_array/search.o"
+	@echo "... suffix_array/search.i"
+	@echo "... suffix_array/search.s"
 .PHONY : help
 
 

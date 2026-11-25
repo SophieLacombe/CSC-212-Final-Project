@@ -5,7 +5,7 @@
 #include <vector>
 
 
-struct Entry
+struct LinearEntry
 {
     std::string word;
     std::string definition;
@@ -25,7 +25,7 @@ class L_search{
     public:
         L_search(const std::string& textfile);
         std::vector<int> find(const std::string& input);
-        std::vector<Entry> format_results(const std::vector<int>Matches);
+        std::vector<LinearEntry> format_results(const std::vector<int>Matches);
         
     
 };

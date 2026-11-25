@@ -12,6 +12,9 @@ add_executable(
 
     src/main.cpp
 
+    suffix_array/search.cpp
+    Linear_Search/L_search.cpp
+
     external/imgui/imgui.cpp
     external/imgui/imgui_draw.cpp
     external/imgui/imgui_tables.cpp
@@ -24,6 +27,7 @@ add_executable(
 target_include_directories(
     DictionaryApp PRIVATE
 
+    .
     external/imgui
     external/imgui/backends
 )

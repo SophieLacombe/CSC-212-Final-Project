@@ -15,7 +15,7 @@ int main(){
 
     std::cout << "Matches found: " << matches.size() << "\n";
 
-    std::vector<Entry> results = dic_array.format_results(matches);
+    std::vector<LinearEntry> results = dic_array.format_results(matches);
 
     std::cout << "Results found: " << results.size() << "\n";
 

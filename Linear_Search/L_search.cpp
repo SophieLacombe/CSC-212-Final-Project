@@ -44,8 +44,8 @@ L_search::L_search(const std::string& textfile){
     }
 
 
-    std::cout << "Text size: " << text.size() << "\n";
-    std::cout << "Entries: " << entrystarts.size() << "\n";
+    //std::cout << "Text size: " << text.size() << "\n";
+    //std::cout << "Entries: " << entrystarts.size() << "\n";
 
 
 }
@@ -75,8 +75,8 @@ std::vector<int> L_search::find(const std::string& input){
   
  }
 
- std::vector<Entry> L_search::format_results(const std::vector<int>Matches){
-    std::vector<Entry> results;
+ std::vector<LinearEntry> L_search::format_results(const std::vector<int>Matches){
+    std::vector<LinearEntry> results;
     std::unordered_set<int> seenEntries;
 
     for(int i = 0; i < Matches.size(); i++){
@@ -100,7 +100,7 @@ std::vector<int> L_search::find(const std::string& input){
                     }
 
 
-                    Entry entry;
+                    LinearEntry entry;
                     
                     entry.word = sub.substr(0, pipepos);
                     entry.definition = sub.substr(pipepos + 1);
