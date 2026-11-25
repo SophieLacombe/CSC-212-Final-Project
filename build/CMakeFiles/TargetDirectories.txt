@@ -1,0 +1,3 @@
+/home/sophie/csc212/finalProject/build/CMakeFiles/DictionaryApp.dir
+/home/sophie/csc212/finalProject/build/CMakeFiles/edit_cache.dir
+/home/sophie/csc212/finalProject/build/CMakeFiles/rebuild_cache.dir
