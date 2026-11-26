@@ -7,10 +7,12 @@
 
 #include <GLFW/glfw3.h>
 
+#include <iostream>
+
 int main()
 {
     Search suffixSearch("../suffix_array/text.bin", "../suffix_array/suffixes.bin", "../suffix_array/entry_starts.bin");
-    L_search linearSearch("../L_search/clean_dictionary.csv");
+    L_search linearSearch("../Linear_Search/clean_dictionary.csv");
 
     glfwInit();
 
@@ -99,9 +101,8 @@ int main()
 
                 if (ImGui::Button("Search Linear"))
                 {
-                    linearResults =
-                        linearSearch.format_results(
-                            linearSearch.find(linearWord));
+                    linearResults = linearSearch.format_results(linearSearch.find(linearWord));
+            
                 }
 
                 ImGui::Separator();
